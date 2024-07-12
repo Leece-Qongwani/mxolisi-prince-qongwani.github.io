@@ -22,6 +22,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         .logo {
             font-size: 24px;
@@ -29,6 +30,10 @@
         }
         .logo span {
             color: #00ffff;
+        }
+        nav {
+            display: flex;
+            align-items: center;
         }
         nav a {
             color: #fff;
@@ -38,6 +43,19 @@
         }
         nav a:hover, nav a.active {
             color: #00ffff;
+        }
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        .menu-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: #fff;
         }
         .hero {
             display: flex;
@@ -102,18 +120,71 @@
         .buttons a:hover {
             background-color: #00cccc;
         }
-
+        section {
+            margin: 50px 0;
+        }
+        .timeline, .services, .contact {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            border: 1px solid #00ffff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .services-item {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact form input, .contact form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #00ffff;
+            background-color: #333;
+            color: #fff;
+        }
+        .contact form button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #00ffff;
+            color: #000;
+            cursor: pointer;
+        }
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 align-items: flex-start;
             }
             nav {
-                margin-top: 20px;
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: left;
+                background-color: #000;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 10px;
+                border-top: 1px solid #00ffff;
             }
             nav a {
-                margin-left: 0;
-                margin-right: 20px;
+                margin: 10px 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .menu-toggle.active + nav {
+                display: flex;
             }
             .hero {
                 flex-direction: column;
@@ -130,6 +201,11 @@
     <div class="container">
         <header>
             <div class="logo">Your <span>Name</span></div>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
             <nav>
                 <a href="#home" class="active">Home</a>
                 <a href="#education">Education</a>
@@ -156,39 +232,85 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="your-image-url.jpg" alt="Your Name">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcyI9Cvp53aaP9XeRn-ZKbJDH2QaWC72O26A&s" alt="Your Name">
                 </div>
+            </section>
+            <section id="education" class="timeline">
+                <h2>Education</h2>
+                <div class="timeline-item">
+                    <h3>University</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <span>2022</span>
+                </div>
+                <div class="timeline-item">
+                    <h3>Internship</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <span>2023</span>
+                </div>
+                <div class="timeline-item">
+                    <h3>Job 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <span>2024</span>
+                </div>
+            </section>
+            <section id="services" class="services">
+                <h2>Services</h2>
+                <div class="services-item">
+                    <h3>UI Design</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Similique temporibus delectus magnam sapiente alias voluptatum porro ab optio, culpa laborum, doloremque adipisci reiciendis soluta labore velit quod quos, ut, eveniet!</p>
+                </div>
+                <div class="services-item">
+                    <h3>Frontend Development</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Fugit, tempora sed? Reiciendis neque, quis quas excepturi blanditiis quaerat voluptatem quasi aeque aut incidunt omnis, delectus quam maiores totam molestias consequuntur.</p>
+                </div>
+                <div class="services-item">
+                    <h3>Backend Development</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quae labore, maxime, velit quidem aliquid esse fugiat tatum hic aut nemo numquam id distinctio repellat sequi reiciendis vero fuga cumque! Accusantium.</p>
+                </div>
+                <div class="services-item">
+                    <h3>Full Stack Development</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisquam error perferendis ipsam quo repellat? Voluptates labore rerum maiores, sequi quaerat. Temporibus voluptates quo illum similique placeat atque cumque. Quibusdam, placeat.</p>
+                </div>
+            </section>
+            <section id="contact" class="contact">
+                <h2>Contact</h2>
+                <form>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
             </section>
         </main>
     </div>
-
     <script>
-        // Typing effect script (same as before)
-        const typingElement = document.getElementById('typing-effect');
-        const name = 'Your Name';
+        const texts = ["Your Name", "Web Designer"];
+        let count = 0;
         let index = 0;
-        let isDeleting = false;
+        let currentText = "";
+        let letter = "";
 
-        function typeEffect() {
-            const currentText = typingElement.innerHTML;
-            if (isDeleting) {
-                typingElement.innerHTML = name.substring(0, currentText.length - 1);
-            } else {
-                typingElement.innerHTML = name.substring(0, currentText.length + 1);
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
             }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
 
-            if (!isDeleting && currentText === name) {
-                isDeleting = true;
-                setTimeout(typeEffect, 2000);
-            } else if (isDeleting && currentText === '') {
-                isDeleting = false;
-                setTimeout(typeEffect, 500);
-            } else {
-                setTimeout(typeEffect, isDeleting ? 100 : 200);
+            document.getElementById("typing-effect").textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
             }
-        }
+            setTimeout(type, 400);
+        })();
 
-        typeEffect();
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
